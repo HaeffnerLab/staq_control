@@ -1,0 +1,435 @@
+#-------------------------------------------------------------------------
+# XEM5010 - Xilinx constraints file
+#
+# Pin mappings for the XEM5010.  Use this as a template and comment out 
+# the pins that are not used in your design.  (By default, map will fail
+# if this file contains constraints for signals not in your design).
+#
+# Copyright (c) 2004-2009 Opal Kelly Incorporated
+# $Rev: 907 $ $Date: 2011-04-28 14:47:52 -0700 (Thu, 28 Apr 2011) $
+#-------------------------------------------------------------------------
+
+#-------------------------------
+# FrontPanel Host Interface pins
+#-------------------------------
+NET "hi_in<0>"      LOC="AD13" | IOSTANDARD="LVCMOS33";
+NET "hi_in<1>"      LOC="AD15" | IOSTANDARD="LVCMOS33";
+NET "hi_in<2>"      LOC="AD14" | IOSTANDARD="LVCMOS33";
+NET "hi_in<3>"      LOC="AB12" | IOSTANDARD="LVCMOS33";
+NET "hi_in<4>"      LOC="Y8"   | IOSTANDARD="LVCMOS33";
+NET "hi_in<5>"      LOC="AA8"  | IOSTANDARD="LVCMOS33";
+NET "hi_in<6>"      LOC="AA17" | IOSTANDARD="LVCMOS33";
+NET "hi_in<7>"      LOC="AB17" | IOSTANDARD="LVCMOS33";
+NET "hi_out<0>"     LOC="AC14" | IOSTANDARD="LVCMOS33";
+NET "hi_out<1>"     LOC="AC11" | IOSTANDARD="LVCMOS33";
+NET "hi_inout<0>"   LOC="AD18" | IOSTANDARD="LVCMOS33";
+NET "hi_inout<1>"   LOC="AC18" | IOSTANDARD="LVCMOS33";
+NET "hi_inout<2>"   LOC="AB10" | IOSTANDARD="LVCMOS33";
+NET "hi_inout<3>"   LOC="AB9"  | IOSTANDARD="LVCMOS33";
+NET "hi_inout<4>"   LOC="AC17" | IOSTANDARD="LVCMOS33";
+NET "hi_inout<5>"   LOC="AC16" | IOSTANDARD="LVCMOS33";
+NET "hi_inout<6>"   LOC="AC8"  | IOSTANDARD="LVCMOS33";
+NET "hi_inout<7>"   LOC="AC9"  | IOSTANDARD="LVCMOS33";
+NET "hi_inout<8>"   LOC="Y12"  | IOSTANDARD="LVCMOS33";
+NET "hi_inout<9>"   LOC="Y13"  | IOSTANDARD="LVCMOS33";
+NET "hi_inout<10>"  LOC="AA15" | IOSTANDARD="LVCMOS33";
+NET "hi_inout<11>"  LOC="AB14" | IOSTANDARD="LVCMOS33";
+NET "hi_inout<12>"  LOC="AA12" | IOSTANDARD="LVCMOS33";
+NET "hi_inout<13>"  LOC="AB11" | IOSTANDARD="LVCMOS33";
+NET "hi_inout<14>"  LOC="AA13" | IOSTANDARD="LVCMOS33";
+NET "hi_inout<15>"  LOC="AA14" | IOSTANDARD="LVCMOS33";
+NET "hi_muxsel"     LOC="AB15" | IOSTANDARD="LVCMOS33";
+
+NET "hi_in<0>" TNM_NET = "okHostClk";
+TIMESPEC "TS_okHostClk" = PERIOD "okHostClk" 20.83 ns HIGH 50%;  # 48 MHz
+NET "hi_inout[*]" TNM = "okHostINOUT_grp";
+TIMEGRP "okHostINOUT_grp" OFFSET = IN 9.83 ns VALID 9.83 ns BEFORE "hi_in<0>" RISING;
+TIMEGRP "okHostINOUT_grp" OFFSET = OUT 11.63 ns AFTER "hi_in<0>" RISING;
+NET "hi_out<0>" OFFSET = OUT 11.93 ns AFTER "hi_in<0>" RISING;
+#NET "hi_out<1>" OFFSET = OUT 11.93 ns AFTER "hi_in<0>" RISING; #Placeholder
+NET "hi_in<1>" OFFSET = IN 14.13 ns VALID 20.83 ns BEFORE "hi_in<0>" RISING;
+NET "hi_in<2>" OFFSET = IN 14.13 ns VALID 20.83 ns BEFORE "hi_in<0>" RISING;
+NET "hi_in<3>" OFFSET = IN 14.13 ns VALID 20.83 ns BEFORE "hi_in<0>" RISING;
+NET "hi_in<4>" OFFSET = IN 13.33 ns VALID 20.83 ns BEFORE "hi_in<0>" RISING;
+NET "hi_in<5>" OFFSET = IN 13.33 ns VALID 20.83 ns BEFORE "hi_in<0>" RISING;
+NET "hi_in<6>" OFFSET = IN 13.33 ns VALID 20.83 ns BEFORE "hi_in<0>" RISING;
+NET "hi_in<7>" OFFSET = IN 13.33 ns VALID 20.83 ns BEFORE "hi_in<0>" RISING;
+
+
+#---------------
+# OSC Clock pins
+#---------------
+NET "osc_clkp"       LOC="AD8" | IOSTANDARD="LVDS25";
+NET "osc_clkn"       LOC="AC7" | IOSTANDARD="LVDS25";
+
+#NET "spi_clk"        LOC="AA18" | IOSTANDARD="LVCMOS33";
+#NET "spi_cs"         LOC="AA10" | IOSTANDARD="LVCMOS33";
+#NET "spi_dout"       LOC="Y18"  | IOSTANDARD="LVCMOS33";
+#NET "spi_din"        LOC="AA9"  | IOSTANDARD="LVCMOS33";
+
+NET "led<0>"         LOC="AD10" | IOSTANDARD="LVCMOS33";
+NET "led<1>"         LOC="AC12" | IOSTANDARD="LVCMOS33";
+NET "led<2>"         LOC="AD11" | IOSTANDARD="LVCMOS33";
+NET "led<3>"         LOC="AC13" | IOSTANDARD="LVCMOS33";
+
+#NET "extled<0>"      LOC = "AF17";
+#NET "extled<1>"      LOC = "AE17";
+#NET "extled<2>"      LOC = "AE16";
+#NET "extled<3>"      LOC = "AF14";
+
+#------------
+# Peripherals
+#------------
+#NET "sdram_clk"      LOC = "";
+#NET "sdram_cke"      LOC = "";
+#NET "sdram_cas_n"    LOC = "";
+#NET "sdram_ras_n"    LOC = "";
+#NET "sdram_we_n"     LOC = "";
+#NET "sdram_cs_n"     LOC = "";
+#NET "sdram_lqdm"     LOC = "";
+#NET "sdram_uqdm"     LOC = "";
+#NET "sdram_a<0>"     LOC = "";
+#NET "sdram_a<1>"     LOC = "";
+#NET "sdram_a<2>"     LOC = "";
+#NET "sdram_a<3>"     LOC = "";
+#NET "sdram_a<4>"     LOC = "";
+#NET "sdram_a<5>"     LOC = "";
+#NET "sdram_a<6>"     LOC = "";
+#NET "sdram_a<7>"     LOC = "";
+#NET "sdram_a<8>"     LOC = "";
+#NET "sdram_a<9>"     LOC = "";
+#NET "sdram_a<10>"    LOC = "";
+#NET "sdram_a<11>"    LOC = "";
+#NET "sdram_a<12>"    LOC = "";
+#NET "sdram_ba<0>"    LOC = "";
+#NET "sdram_ba<1>"    LOC = "";
+#NET "sdram_d<0>"     LOC = "";
+#NET "sdram_d<1>"     LOC = "";
+#NET "sdram_d<2>"     LOC = "";
+#NET "sdram_d<3>"     LOC = "";
+#NET "sdram_d<4>"     LOC = "";
+#NET "sdram_d<5>"     LOC = "";
+#NET "sdram_d<6>"     LOC = "";
+#NET "sdram_d<7>"     LOC = "";
+#NET "sdram_d<8>"     LOC = "";
+#NET "sdram_d<9>"     LOC = "";
+#NET "sdram_d<10>"    LOC = "";
+#NET "sdram_d<11>"    LOC = "";
+#NET "sdram_d<12>"    LOC = "";
+#NET "sdram_d<13>"    LOC = "";
+#NET "sdram_d<14>"    LOC = "";
+#NET "sdram_d<15>"    LOC = "";
+
+#NET "sdram2_clk"      LOC = "";
+#NET "sdram2_cke"      LOC = "";
+#NET "sdram2_cas_n"    LOC = "";
+#NET "sdram2_ras_n"    LOC = "";
+#NET "sdram2_we_n"     LOC = "";
+#NET "sdram2_cs_n"     LOC = "";
+#NET "sdram2_lqdm"     LOC = "";
+#NET "sdram2_uqdm"     LOC = "";
+#NET "sdram2_a<0>"     LOC = "";
+#NET "sdram2_a<1>"     LOC = "";
+#NET "sdram2_a<2>"     LOC = "";
+#NET "sdram2_a<3>"     LOC = "";
+#NET "sdram2_a<4>"     LOC = "";
+#NET "sdram2_a<5>"     LOC = "";
+#NET "sdram2_a<6>"     LOC = "";
+#NET "sdram2_a<7>"     LOC = "";
+#NET "sdram2_a<8>"     LOC = "";
+#NET "sdram2_a<9>"     LOC = "";
+#NET "sdram2_a<10>"    LOC = "";
+#NET "sdram2_a<11>"    LOC = "";
+#NET "sdram2_a<12>"    LOC = "";
+#NET "sdram2_ba<0>"    LOC = "";
+#NET "sdram2_ba<1>"    LOC = "";
+#NET "sdram2_d<0>"     LOC = "";
+#NET "sdram2_d<1>"     LOC = "";
+#NET "sdram2_d<2>"     LOC = "";
+#NET "sdram2_d<3>"     LOC = "";
+#NET "sdram2_d<4>"     LOC = "";
+#NET "sdram2_d<5>"     LOC = "";
+#NET "sdram2_d<6>"     LOC = "";
+#NET "sdram2_d<7>"     LOC = "";
+#NET "sdram2_d<8>"     LOC = "";
+#NET "sdram2_d<9>"     LOC = "";
+#NET "sdram2_d<10>"    LOC = "";
+#NET "sdram2_d<11>"    LOC = "";
+#NET "sdram2_d<12>"    LOC = "";
+#NET "sdram2_d<13>"    LOC = "";
+#NET "sdram2_d<14>"    LOC = "";
+#NET "sdram2_d<15>"    LOC = "";
+
+#NET "ssram_clk"      LOC="R22" | IOSTANDARD="LVCMOS18";
+#NET "ssram_adv_ld"   LOC="J5"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_ce_n"     LOC="L4"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_ce1_n"    LOC="M22" | IOSTANDARD="LVCMOS18";
+#NET "ssram_oe_n"     LOC="K22" | IOSTANDARD="LVCMOS18";
+#NET "ssram_we_n"     LOC="J21" | IOSTANDARD="LVCMOS18";
+#NET "ssram_ft"       LOC="M6"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_zz"       LOC="K5"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<0>"     LOC="L5"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<1>"     LOC="M5"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<2>"     LOC="M4"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<3>"     LOC="L3"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<4>"     LOC="J4"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<5>"     LOC="H4"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<6>"     LOC="G4"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<7>"     LOC="P3"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<8>"     LOC="N4"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<9>"     LOC="T3"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<10>"    LOC="R3"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<11>"    LOC="H19" | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<12>"    LOC="K20" | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<13>"    LOC="P19" | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<14>"    LOC="R23" | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<15>"    LOC="J23" | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<16>"    LOC="N23" | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<17>"    LOC="L23" | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<18>"    LOC="K23" | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<19>"    LOC="H23" | IOSTANDARD="LVCMOS18";
+#NET "ssram_a<20>"    LOC="P23" | IOSTANDARD="LVCMOS18";  # NC for 36Mb SSRAM
+#NET "ssram_d<0>"     LOC="R7"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<1>"     LOC="R5"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<2>"     LOC="P4"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<3>"     LOC="R6"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<4>"     LOC="P6"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<5>"     LOC="N6"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<6>"     LOC="P5"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<7>"     LOC="M7"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<8>"     LOC="M19" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<9>"     LOC="L20" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<10>"    LOC="M21" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<11>"    LOC="P20" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<12>"    LOC="N21" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<13>"    LOC="P21" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<14>"    LOC="N22" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<15>"    LOC="L22" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<16>"    LOC="H9"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<17>"    LOC="G11" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<18>"    LOC="G10" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<19>"    LOC="H11" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<20>"    LOC="G12" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<21>"    LOC="H12" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<22>"    LOC="F13" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<23>"    LOC="H13" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<24>"    LOC="G14" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<25>"    LOC="H14" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<26>"    LOC="G15" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<27>"    LOC="F15" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<28>"    LOC="H17" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<29>"    LOC="G17" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<30>"    LOC="G16" | IOSTANDARD="LVCMOS18";
+#NET "ssram_d<31>"    LOC="G19" | IOSTANDARD="LVCMOS18";
+#NET "ssram_dp<0>"    LOC="N7"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_dp<1>"    LOC="L19" | IOSTANDARD="LVCMOS18";
+#NET "ssram_dp<2>"    LOC="G9"  | IOSTANDARD="LVCMOS18";
+#NET "ssram_dp<3>"    LOC="H18" | IOSTANDARD="LVCMOS18";
+
+
+#NET "xbusp<0>"       LOC = "F24";  # JP2_2
+#NET "xbusn<0>"       LOC = "F25";  # JP2_4
+#NET "xbusp<1>"       LOC = "E25";  # JP2_5
+#NET "xbusn<1>"       LOC = "E26";  # JP2_7
+#NET "xbusp<2>"       LOC = "G26";  # JP2_6
+#NET "xbusn<2>"       LOC = "H26";  # JP2_8
+#NET "xbusp<3>"       LOC = "G24";  # JP2_9
+#NET "xbusn<3>"       LOC = "G25";  # JP2_11
+#NET "xbusp<4>"       LOC = "J25";  # JP2_10
+#NET "xbusn<4>"       LOC = "J26";  # JP2_12
+#NET "xbusp<5>"       LOC = "H24";  # JP2_13
+#NET "xbusn<5>"       LOC = "J24";  # JP2_15
+#NET "xbusp<6>"       LOC = "L24";  # JP2_14
+#NET "xbusn<6>"       LOC = "L25";  # JP2_16
+#NET "xbusp<7>"       LOC = "K25";  # JP2_17
+#NET "xbusn<7>"       LOC = "K26";  # JP2_19
+#NET "xbusp<8>"       LOC = "M25";  # JP2_18
+#NET "xbusn<8>"       LOC = "M26";  # JP2_20
+#NET "xbusp<9>"       LOC = "M24";  # JP2_21
+#NET "xbusn<9>"       LOC = "N24";  # JP2_23
+#NET "xbusp<10>"      LOC = "P26";  # JP2_22
+#NET "xbusn<10>"      LOC = "N26";  # JP2_24
+#NET "xbusp<11>"      LOC = "P25";  # JP2_25
+#NET "xbusn<11>"      LOC = "P24";  # JP2_27
+#NET "xbusp<12>"      LOC = "R25";  # JP2_26
+#NET "xbusn<12>"      LOC = "R26";  # JP2_28
+#NET "xbusp<13>"      LOC = "T24";  # JP2_29
+#NET "xbusn<13>"      LOC = "T25";  # JP2_31
+#NET "xbusp<14>"      LOC = "V26";  # JP2_30
+#NET "xbusn<14>"      LOC = "U26";  # JP2_32
+#NET "xbusp<15>"      LOC = "U24";  # JP2_33
+#NET "xbusn<15>"      LOC = "U25";  # JP2_35
+#NET "xbusp<16>"      LOC = "W25";  # JP2_34
+#NET "xbusn<16>"      LOC = "W26";  # JP2_36
+#NET "xbusp<17>"      LOC = "Y25";  # JP2_37
+#NET "xbusn<17>"      LOC = "Y26";  # JP2_39
+#NET "xbusp<18>"      LOC = "AB25"; # JP2_38
+#NET "xbusn<18>"      LOC = "AA25"; # JP2_40
+#NET "xbusp<19>"      LOC = "AC26"; # JP2_41
+#NET "xbusn<19>"      LOC = "AB26"; # JP2_43
+#NET "xbusp<20>"      LOC = "T23";  # JP2_45
+#NET "xbusn<20>"      LOC = "T22";  # JP2_47
+#NET "xbusp<21>"      LOC = "R21";  # JP2_46
+#NET "xbusn<21>"      LOC = "R20";  # JP2_48
+#NET "xbusp<22>"      LOC = "T20";  # JP2_49
+#NET "xbusn<22>"      LOC = "T19";  # JP2_51
+#NET "xbusp<23>"      LOC = "U22";  # JP2_50
+#NET "xbusn<23>"      LOC = "U21";  # JP2_52
+#NET "xbusp<24>"      LOC = "W24";  # JP2_53
+#NET "xbusn<24>"      LOC = "W23";  # JP2_55
+#NET "xbusp<25>"      LOC = "V24";  # JP2_54
+#NET "xbusn<25>"      LOC = "V23";  # JP2_56
+#NET "xbusp<26>"      LOC = "AA23"; # JP2_57
+#NET "xbusn<26>"      LOC = "AA24"; # JP2_59
+#NET "xbusp<27>"      LOC = "Y23";  # JP2_58
+#NET "xbusn<27>"      LOC = "Y22";  # JP2_60
+#NET "xbusp<28>"      LOC = "AC23"; # JP2_61
+#NET "xbusn<28>"      LOC = "AC22"; # JP2_63
+#NET "xbusp<29>"      LOC = "AB24"; # JP2_62
+#NET "xbusn<29>"      LOC = "AC24"; # JP2_64
+#NET "xbusp<30>"      LOC = "AB22"; # JP2_65
+#NET "xbusn<30>"      LOC = "AA22"; # JP2_67
+#NET "xbusp<31>"      LOC = "AC21"; # JP2_66
+#NET "xbusn<31>"      LOC = "AB21"; # JP2_68
+#NET "xbusp<32>"      LOC = "V21";  # JP2_69
+#NET "xbusn<32>"      LOC = "V22";  # JP2_71
+#NET "xbusp<33>"      LOC = "W21";  # JP2_70
+#NET "xbusn<33>"      LOC = "W20";  # JP2_72
+#NET "xbusp<34>"      LOC = "U19";  # JP2_73
+#NET "xbusn<34>"      LOC = "U20";  # JP2_75
+#NET "xbusp<35>"      LOC = "V19";  # JP2_74
+#NET "xbusn<35>"      LOC = "W19";  # JP2_76
+#NET "xbusp<36>"      LOC = "Y21";  # JP2_77
+#NET "xbusn<36>"      LOC = "Y20";  # JP2_79
+#NET "xbusp<37>"      LOC = "AD19"; # JP2_78
+#NET "xbusn<37>"      LOC = "AC19"; # JP2_80
+#NET "xbusp<38>"      LOC = "AB20"; # JP2_81
+#NET "xbusn<38>"      LOC = "AB19"; # JP2_83
+#NET "xbusp<39>"      LOC = "AA20"; # JP2_82
+#NET "xbusn<39>"      LOC = "AA19"; # JP2_84
+
+
+#NET "zbusp<0>"       LOC = "AD24"; # JP2_85
+#NET "zbusn<0>"       LOC = "AD23"; # JP2_87
+#NET "zbusp<1>"       LOC = "AE26"; # JP2_90
+#NET "zbusn<1>"       LOC = "AD26"; # JP2_92
+#NET "zbusp<2>"       LOC = "AF24"; # JP2_89
+#NET "zbusn<2>"       LOC = "AF25"; # JP2_91
+#NET "zbusp<3>"       LOC = "AE25"; # JP2_94
+#NET "zbusn<3>"       LOC = "AD25"; # JP2_96
+#NET "zbusp<4>"       LOC = "AF23"; # JP2_93
+#NET "zbusn<4>"       LOC = "AE23"; # JP2_95
+#NET "zbusp<5>"       LOC = "AD20"; # JP2_98
+#NET "zbusn<5>"       LOC = "AD21"; # JP2_100
+#NET "zbusp<6>"       LOC = "AE20"; # JP2_97
+#NET "zbusn<6>"       LOC = "AE21"; # JP2_99
+#NET "zbusp<7>"       LOC = "AF18"; # JP2_102
+#NET "zbusn<7>"       LOC = "AE18"; # JP2_104
+#NET "zbusp<8>"       LOC = "AF19"; # JP2_101
+#NET "zbusn<8>"       LOC = "AF20"; # JP2_103
+#NET "zbusp<9>"       LOC = "AF15"; # JP2_106
+#NET "zbusn<9>"       LOC = "AE15"; # JP2_108
+
+
+#NET "kbusp<0>"       LOC = "F8";  # JP3_6
+#NET "kbusn<0>"       LOC = "E8";  # JP3_8
+#NET "kbusp<1>"       LOC = "D13"; # JP3_1
+#NET "kbusn<1>"       LOC = "D14"; # JP3_3
+#NET "kbusp<2>"       LOC = "F9";  # JP3_10
+#NET "kbusn<2>"       LOC = "F10"; # JP3_12
+#NET "kbusp<3>"       LOC = "D15"; # JP3_5
+#NET "kbusn<3>"       LOC = "E15"; # JP3_7
+#NET "kbusp<4>"       LOC = "E10"; # JP3_14
+#NET "kbusn<4>"       LOC = "E11"; # JP3_16
+#NET "kbusp<5>"       LOC = "E16"; # JP3_9
+#NET "kbusn<5>"       LOC = "E17"; # JP3_11
+#NET "kbusp<6>"       LOC = "E12"; # JP3_18
+#NET "kbusn<6>"       LOC = "F12"; # JP3_20
+#NET "kbusp<7>"       LOC = "E18"; # JP3_13
+#NET "kbusn<7>"       LOC = "F19"; # JP3_15
+#NET "kbusp<8>"       LOC = "F14"; # JP3_22
+#NET "kbusn<8>"       LOC = "E13"; # JP3_24
+#NET "kbusp<9>"       LOC = "F18"; # JP3_17
+#NET "kbusn<9>"       LOC = "F17"; # JP3_19
+
+
+#NET "ybusp<0>"       LOC = "E2";  # JP3_21
+#NET "ybusn<0>"       LOC = "E1";  # JP3_23
+#NET "ybusp<1>"       LOC = "F3";  # JP3_26
+#NET "ybusn<1>"       LOC = "E3";  # JP3_28
+#NET "ybusp<2>"       LOC = "G1";  # JP3_25
+#NET "ybusn<2>"       LOC = "H1";  # JP3_27
+#NET "ybusp<3>"       LOC = "F2";  # JP3_30
+#NET "ybusn<3>"       LOC = "G2";  # JP3_32
+#NET "ybusp<4>"       LOC = "K3";  # JP3_29
+#NET "ybusn<4>"       LOC = "K2";  # JP3_31
+#NET "ybusp<5>"       LOC = "H3";  # JP3_34
+#NET "ybusn<5>"       LOC = "J3";  # JP3_36
+#NET "ybusp<6>"       LOC = "L2";  # JP3_33
+#NET "ybusn<6>"       LOC = "K1";  # JP3_35
+#NET "ybusp<7>"       LOC = "J1";  # JP3_38
+#NET "ybusn<7>"       LOC = "H2";  # JP3_40
+#NET "ybusp<8>"       LOC = "M1";  # JP3_37
+#NET "ybusn<8>"       LOC = "N1";  # JP3_39
+#NET "ybusp<9>"       LOC = "M2";  # JP3_42
+#NET "ybusn<9>"       LOC = "N2";  # JP3_44
+#NET "ybusp<10>"      LOC = "P1";  # JP3_45
+#NET "ybusn<10>"      LOC = "R1";  # JP3_47
+#NET "ybusp<11>"      LOC = "T2";  # JP3_46
+#NET "ybusn<11>"      LOC = "R2";  # JP3_48
+#NET "ybusp<12>"      LOC = "U2";  # JP3_49
+#NET "ybusn<12>"      LOC = "U1";  # JP3_51
+#NET "ybusp<13>"      LOC = "V2";  # JP3_50
+#NET "ybusn<13>"      LOC = "V1";  # JP3_52
+#NET "ybusp<14>"      LOC = "Y1";  # JP3_53
+#NET "ybusn<14>"      LOC = "W1";  # JP3_55
+#NET "ybusp<15>"      LOC = "AA2"; # JP3_54
+#NET "ybusn<15>"      LOC = "Y2";  # JP3_56
+#NET "ybusp<16>"      LOC = "AB2"; # JP3_57
+#NET "ybusn<16>"      LOC = "AB1"; # JP3_59
+#NET "ybusp<17>"      LOC = "AC2"; # JP3_58
+#NET "ybusn<17>"      LOC = "AC1"; # JP3_60
+#NET "ybusp<18>"      LOC = "AE1"; # JP3_61
+#NET "ybusn<18>"      LOC = "AD1"; # JP3_63
+#NET "ybusp<19>"      LOC = "AF2"; # JP3_62
+#NET "ybusn<19>"      LOC = "AE2"; # JP3_64
+#NET "ybusp<20>"      LOC = "V3";  # JP3_65
+#NET "ybusn<20>"      LOC = "U4";  # JP3_67
+#NET "ybusp<21>"      LOC = "T5";  # JP3_66
+#NET "ybusn<21>"      LOC = "T4";  # JP3_68
+#NET "ybusp<22>"      LOC = "T7";  # JP3_69
+#NET "ybusn<22>"      LOC = "U7";  # JP3_71
+#NET "ybusp<23>"      LOC = "U5";  # JP3_70
+#NET "ybusn<23>"      LOC = "U6";  # JP3_72
+#NET "ybusp<24>"      LOC = "V4";  # JP3_73
+#NET "ybusn<24>"      LOC = "W4";  # JP3_75
+#NET "ybusp<25>"      LOC = "W3";  # JP3_74
+#NET "ybusn<25>"      LOC = "Y3";  # JP3_76
+#NET "ybusp<26>"      LOC = "V6";  # JP3_77
+#NET "ybusn<26>"      LOC = "V7";  # JP3_79
+#NET "ybusp<27>"      LOC = "W5";  # JP3_78
+#NET "ybusn<27>"      LOC = "W6";  # JP3_80
+#NET "ybusp<28>"      LOC = "Y6";  # JP3_81
+#NET "ybusn<28>"      LOC = "Y5";  # JP3_83
+#NET "ybusp<29>"      LOC = "AA4"; # JP3_82
+#NET "ybusn<29>"      LOC = "AA5"; # JP3_84
+#NET "ybusp<30>"      LOC = "Y7";  # JP3_89
+#NET "ybusn<30>"      LOC = "AA7"; # JP3_91
+#NET "ybusp<31>"      LOC = "AB4"; # JP3_86
+#NET "ybusn<31>"      LOC = "AA3"; # JP3_88
+#NET "ybusp<32>"      LOC = "AC4"; # JP3_93
+#NET "ybusn<32>"      LOC = "AC3"; # JP3_95
+#NET "ybusp<33>"      LOC = "AD4"; # JP3_90
+#NET "ybusn<33>"      LOC = "AD3"; # JP3_92
+#NET "ybusp<34>"      LOC = "AB6"; # JP3_97
+#NET "ybusn<34>"      LOC = "AB5"; # JP3_99
+#NET "ybusp<35>"      LOC = "AC6"; # JP3_94
+#NET "ybusn<35>"      LOC = "AB7"; # JP3_96
+#NET "ybusp<36>"      LOC = "AF3"; # JP3_101
+#NET "ybusn<36>"      LOC = "AE3"; # JP3_103
+#NET "ybusp<37>"      LOC = "AD6"; # JP3_98
+#NET "ybusn<37>"      LOC = "AD5"; # JP3_100
+#NET "ybusp<38>"      LOC = "AF5"; # JP3_105
+#NET "ybusn<38>"      LOC = "AF4"; # JP3_107
+#NET "ybusp<39>"      LOC = "AE6"; # JP3_102
+#NET "ybusn<39>"      LOC = "AE5"; # JP3_104

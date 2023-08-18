@@ -1,0 +1,166 @@
+#-------------------------------------------------------------------------
+# XEM3020 - Xilinx constraints file
+#
+# Pin mappings for the XEM3020.  Use this as a template and comment out 
+# the pins that are not used in your design.  (By default, map will fail
+# if this file contains constraints for signals not in your design).
+#
+# Copyright (c) 2004-2007 Opal Kelly Incorporated
+# $Rev: 158 $ $Date: 2006-10-08 18:34:52 -0700 (Sun, 08 Oct 2006) $
+#-------------------------------------------------------------------------
+
+#-------------------------------
+# FrontPanel Host Interface pins
+#-------------------------------
+NET "hi_in<0>"			LOC = "M8"   | IOSTANDARD=LVCMOS33;
+NET "hi_in<1>"			LOC = "Y5"   | IOSTANDARD=LVCMOS33;
+NET "hi_in<2>"			LOC = "R12"  | IOSTANDARD=LVCMOS33;
+NET "hi_in<3>"			LOC = "AB19" | IOSTANDARD=LVCMOS33;
+NET "hi_in<4>"			LOC = "V16"  | IOSTANDARD=LVCMOS33;
+NET "hi_in<5>"			LOC = "U16"  | IOSTANDARD=LVCMOS33;
+NET "hi_in<6>"			LOC = "AB18" | IOSTANDARD=LVCMOS33;
+NET "hi_in<7>"			LOC = "AB17" | IOSTANDARD=LVCMOS33;
+NET "hi_out<0>"		LOC = "W5"   | IOSTANDARD=LVCMOS33;
+NET "hi_out<1>"		LOC = "Y15"  | IOSTANDARD=LVCMOS33;
+NET "hi_inout<0>"		LOC = "V11"  | IOSTANDARD=LVCMOS33;
+NET "hi_inout<1>"		LOC = "U11"  | IOSTANDARD=LVCMOS33;
+NET "hi_inout<2>"		LOC = "AB11" | IOSTANDARD=LVCMOS33;
+NET "hi_inout<3>"		LOC = "R11"  | IOSTANDARD=LVCMOS33;
+NET "hi_inout<4>"		LOC = "T11"  | IOSTANDARD=LVCMOS33;
+NET "hi_inout<5>"		LOC = "Y12"  | IOSTANDARD=LVCMOS33;
+NET "hi_inout<6>"		LOC = "W12"  | IOSTANDARD=LVCMOS33;
+NET "hi_inout<7>"		LOC = "U12"  | IOSTANDARD=LVCMOS33;
+NET "hi_inout<8>"		LOC = "AA17" | IOSTANDARD=LVCMOS33;
+NET "hi_inout<9>"		LOC = "W18"  | IOSTANDARD=LVCMOS33;
+NET "hi_inout<10>"	LOC = "W17"  | IOSTANDARD=LVCMOS33;
+NET "hi_inout<11>"	LOC = "AB21" | IOSTANDARD=LVCMOS33;
+NET "hi_inout<12>"	LOC = "Y18"  | IOSTANDARD=LVCMOS33;
+NET "hi_inout<13>"	LOC = "AB13" | IOSTANDARD=LVCMOS33;
+NET "hi_inout<14>"	LOC = "AB15" | IOSTANDARD=LVCMOS33;
+NET "hi_inout<15>"	LOC = "AB16" | IOSTANDARD=LVCMOS33;
+
+NET "hi_muxsel"      LOC = "V12" | IOSTANDARD=LVCMOS33;
+NET "vcco_enable"    LOC = "T10" | IOSTANDARD=LVCMOS33;
+NET "vcco0_sel"      LOC = "R10" | IOSTANDARD=LVCMOS33;
+NET "vcco3_sel"      LOC = "P10" | IOSTANDARD=LVCMOS33;
+
+
+#---------------
+# PLL Clock pins
+#---------------
+NET "clk1"           LOC = "H12" | IOSTANDARD=LVCMOS33;
+
+NET "ok1<24>" TNM_NET="TNM_ti_clk";
+TIMEGRP "TNM_ti_clk" AREA_GROUP = "okHI";
+AREA_GROUP "okHI" RANGE=CLOCKREGION_X1Y0,CLOCKREGION_X1Y1;
+TIMESPEC "TS_ti_clk" = PERIOD "TNM_ti_clk" 20 ns HIGH 50%;
+
+NET "clk1" TNM_NET="TNM_clk1";
+TIMESPEC "TS_clk1" = PERIOD "TNM_clk1" 7 ns HIGH 50%;
+
+INST "okHI/hiDCM/DCM_SP_INST" LOC="DCM_X2Y0";
+
+#------------
+# Peripherals
+#------------
+NET "sdram_clk_out"  LOC = "P16" | IOSTANDARD=LVCMOS33;
+NET "sdram_cke"      LOC = "R19" | IOSTANDARD=LVCMOS33;
+NET "sdram_cas_n"    LOC = "L21" | IOSTANDARD=LVCMOS33;
+NET "sdram_ras_n"    LOC = "R20" | IOSTANDARD=LVCMOS33;
+NET "sdram_we_n"     LOC = "T22" | IOSTANDARD=LVCMOS33;
+NET "sdram_cs_n"     LOC = "R22" | IOSTANDARD=LVCMOS33;
+NET "sdram_ldqm"     LOC = "U21" | IOSTANDARD=LVCMOS33;
+NET "sdram_udqm"     LOC = "L18" | IOSTANDARD=LVCMOS33;
+NET "sdram_a<0>"     LOC = "M20" | IOSTANDARD=LVCMOS33;
+NET "sdram_a<1>"     LOC = "N20" | IOSTANDARD=LVCMOS33;
+NET "sdram_a<2>"     LOC = "N22" | IOSTANDARD=LVCMOS33;
+NET "sdram_a<3>"     LOC = "M22" | IOSTANDARD=LVCMOS33;
+NET "sdram_a<4>"     LOC = "K22" | IOSTANDARD=LVCMOS33;
+NET "sdram_a<5>"     LOC = "K19" | IOSTANDARD=LVCMOS33;
+NET "sdram_a<6>"     LOC = "N18" | IOSTANDARD=LVCMOS33;
+NET "sdram_a<7>"     LOC = "M16" | IOSTANDARD=LVCMOS33;
+NET "sdram_a<8>"     LOC = "L20" | IOSTANDARD=LVCMOS33;
+NET "sdram_a<9>"     LOC = "P18" | IOSTANDARD=LVCMOS33;
+NET "sdram_a<10>"    LOC = "P22" | IOSTANDARD=LVCMOS33;
+NET "sdram_a<11>"    LOC = "N19" | IOSTANDARD=LVCMOS33;
+NET "sdram_a<12>"    LOC = "L19" | IOSTANDARD=LVCMOS33;
+NET "sdram_ba<0>"    LOC = "L22" | IOSTANDARD=LVCMOS33;
+NET "sdram_ba<1>"    LOC = "R21" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<0>"     LOC = "AA22" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<1>"     LOC = "Y22" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<2>"     LOC = "Y21" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<3>"     LOC = "W22" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<4>"     LOC = "W21" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<5>"     LOC = "V22" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<6>"     LOC = "U20" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<7>"     LOC = "U22" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<8>"     LOC = "K16" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<9>"     LOC = "R18" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<10>"    LOC = "V19" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<11>"    LOC = "T19" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<12>"    LOC = "W20" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<13>"    LOC = "T18" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<14>"    LOC = "V20" | IOSTANDARD=LVCMOS33;
+NET "sdram_d<15>"    LOC = "U19" | IOSTANDARD=LVCMOS33;
+
+#NET "sdram_clk_out"  LOC = "D3" | IOSTANDARD=LVCMOS33;
+#NET "sdram_cke"      LOC = "D2" | IOSTANDARD=LVCMOS33;
+#NET "sdram_cas_n"    LOC = "E4" | IOSTANDARD=LVCMOS33;
+#NET "sdram_ras_n"    LOC = "E3" | IOSTANDARD=LVCMOS33;
+#NET "sdram_we_n"     LOC = "D1" | IOSTANDARD=LVCMOS33;
+#NET "sdram_cs_n"     LOC = "E1" | IOSTANDARD=LVCMOS33;
+#NET "sdram_ldqm"     LOC = "F3" | IOSTANDARD=LVCMOS33;
+#NET "sdram_udqm"     LOC = "F4" | IOSTANDARD=LVCMOS33;
+#NET "sdram_a<0>"     LOC = "G4" | IOSTANDARD=LVCMOS33;
+#NET "sdram_a<1>"     LOC = "G5" | IOSTANDARD=LVCMOS33;
+#NET "sdram_a<2>"     LOC = "G1" | IOSTANDARD=LVCMOS33;
+#NET "sdram_a<3>"     LOC = "F1" | IOSTANDARD=LVCMOS33;
+#NET "sdram_a<4>"     LOC = "G7" | IOSTANDARD=LVCMOS33;
+#NET "sdram_a<5>"     LOC = "G6" | IOSTANDARD=LVCMOS33;
+#NET "sdram_a<6>"     LOC = "H5" | IOSTANDARD=LVCMOS33;
+#NET "sdram_a<7>"     LOC = "H4" | IOSTANDARD=LVCMOS33;
+#NET "sdram_a<8>"     LOC = "H3" | IOSTANDARD=LVCMOS33;
+#NET "sdram_a<9>"     LOC = "H2" | IOSTANDARD=LVCMOS33;
+#NET "sdram_a<10>"    LOC = "J1" | IOSTANDARD=LVCMOS33;
+#NET "sdram_a<11>"    LOC = "H1" | IOSTANDARD=LVCMOS33;
+#NET "sdram_a<12>"    LOC = "J5" | IOSTANDARD=LVCMOS33;
+#NET "sdram_ba<0>"    LOC = "J6" | IOSTANDARD=LVCMOS33;
+#NET "sdram_ba<1>"    LOC = "K3" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<0>"     LOC = "J3" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<1>"     LOC = "K8" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<2>"     LOC = "J8" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<3>"     LOC = "K5" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<4>"     LOC = "K4" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<5>"     LOC = "L1" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<6>"     LOC = "K1" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<7>"     LOC = "K7" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<8>"     LOC = "L7" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<9>"     LOC = "M5" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<10>"    LOC = "L5" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<11>"    LOC = "M1" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<12>"    LOC = "N1" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<13>"    LOC = "M3" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<14>"    LOC = "M4" | IOSTANDARD=LVCMOS33;
+#NET "sdram_d<15>"    LOC = "N7" | IOSTANDARD=LVCMOS33;
+
+NET "led<0>"        LOC = "AA14" | IOSTANDARD=LVCMOS33;
+NET "led<1>"        LOC = "AB14" | IOSTANDARD=LVCMOS33;
+NET "led<2>"        LOC = "AA15" | IOSTANDARD=LVCMOS33;
+NET "led<3>"        LOC = "Y14" | IOSTANDARD=LVCMOS33;
+NET "led<4>"        LOC = "W14" | IOSTANDARD=LVCMOS33;
+NET "led<5>"        LOC = "V14" | IOSTANDARD=LVCMOS33;
+NET "led<6>"        LOC = "U13" | IOSTANDARD=LVCMOS33;
+NET "led<7>"        LOC = "U14" | IOSTANDARD=LVCMOS33;
+
+#NET "dip<0>"        LOC = "Y6" | IOSTANDARD=LVCMOS33;
+#NET "dip<1>"        LOC = "W10" | IOSTANDARD=LVCMOS33;
+#NET "dip<2>"        LOC = "Y10" | IOSTANDARD=LVCMOS33;
+#NET "dip<3>"        LOC = "AA4" | IOSTANDARD=LVCMOS33;
+#NET "dip<4>"        LOC = "AA6" | IOSTANDARD=LVCMOS33;
+#NET "dip<5>"        LOC = "AB6" | IOSTANDARD=LVCMOS33;
+#NET "dip<6>"        LOC = "AB7" | IOSTANDARD=LVCMOS33;
+#NET "dip<7>"        LOC = "Y11" | IOSTANDARD=LVCMOS33;
+
+#NET "button<0>"     LOC = "AB2" | IOSTANDARD=LVCMOS33;
+#NET "button<1>"     LOC = "Y4" | IOSTANDARD=LVCMOS33;
+
